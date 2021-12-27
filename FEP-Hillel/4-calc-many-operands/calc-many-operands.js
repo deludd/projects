@@ -1,9 +1,16 @@
-let action = getAction()
-let amountOperand = getAmountOfOperands()
-let arrYourNumbers = []
+const ACTIONS = {'+': plus, '-' : minus, '*' : multiply, '/' : divine}
+const ACTION_LIST = Object.keys(ACTIONS)
+
+const action = getAction()
+const amountOperand = getAmountOfOperands()
+const arrYourNumbers = getYourNumbers(amountOperand)
+const result = calculate(arrYourNumbers, action)
+
+showResult(arrYourNumbers, action, result)
 
 function getAction() {
     let action
+
     do {
         action = prompt('Select an action * / + -')
     }while (!isActionValid(action))
@@ -12,11 +19,12 @@ function getAction() {
 }
 
 function isActionValid(action) {
-    return action === '+' || action === '-' || action === '*' || action === '/'
+    return ACTION_LIST.includes(action)
 }
 
 function getAmountOfOperands() {
     let amountOfOperands
+
     do {
         amountOfOperands = Number(prompt(`Choose the amount of operands`))
     }while (isAmountValid(amountOfOperands))
@@ -28,45 +36,51 @@ function isAmountValid(amountOfOperands) {
     return !(amountOfOperands > 1 && amountOfOperands <= 5) || isNaN(amountOfOperands)
 }
 
-for(let yourOperands = 1; yourOperands <= amountOperand; yourOperands++){
-    let yourNumbers
-    do {
-        yourNumbers = Number(prompt(`Choose the ${yourOperands} number`))
-    }while (isOperandsValid(yourNumbers))
+function getYourNumbers(amountOperand) {
+    let yourArrayNumbers = []
 
-    arrYourNumbers.push(yourNumbers)
+    for(let yourOperands = 1; yourOperands <= amountOperand; yourOperands++){
+       let yourNumber
+
+        do {
+            yourNumber = Number(prompt(`Choose the ${yourOperands} number`))
+        }while (isOperandsValid(yourNumber))
+
+        yourArrayNumbers.push(yourNumber)
+    }
+
+    return yourArrayNumbers
 }
 
 function isOperandsValid(yourNumbers) {
     return isNaN(yourNumbers)
 }
 
-let plus = function (arrYourNumbers) {
-    return arrYourNumbers.reduce((a,b) => a + b)
+function plus(operandA, operandB) {
+    return operandA + operandB
 }
 
-let minus = function (arrYourNumbers) {
-    return arrYourNumbers.reduce((a,b) => a - b)
+function minus(operandA, operandB) {
+    return operandA - operandB
 }
 
-let multiply = function (arrYourNumbers) {
-    return arrYourNumbers.reduce((a,b) => a * b)
+function multiply(operandA, operandB) {
+    return operandA * operandB
 }
 
-let divine = function (arrYourNumbers) {
-    return arrYourNumbers.reduce((a,b) => a / b)
+ function divine(operandA, operandB) {
+    return operandA / operandB
 }
 
+function calculate(operands, action){
+    const mathFunc = ACTIONS[action]
 
-if (action === '+') {
-       alert(`${arrYourNumbers.join(action)} = ${plus(arrYourNumbers)}`)
-    }else if(action === '-') {
-        alert(`${arrYourNumbers.join(action)} = ${minus(arrYourNumbers)}`)
-    }else if (action === '*') {
-        alert(`${arrYourNumbers.join(action)} = ${multiply(arrYourNumbers)}`)
-    }else if (action === '/'){
-        alert(`${arrYourNumbers.join(action)} = ${divine(arrYourNumbers)}`)
-    } else {
-        alert(`You choose a wrong action:((`)
+    return operands.reduce((a,b) => mathFunc(a,b))
+}
+
+function showResult(operands, action, result){
+    const formula = arrYourNumbers.join(` ${action} `)
+
+    alert(`${formula} = ${result}`)
 }
 
