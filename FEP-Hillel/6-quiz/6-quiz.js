@@ -7,6 +7,7 @@ const questions = [
 ]
 
 let points = 0
+calculateResult()
 
 function handleQuestion(question){
     let handler
@@ -23,10 +24,15 @@ function chooseType(handler, question) {
     return handler(question.question) == question.answer
 }
 
-questions.forEach(question => {
-    if (handleQuestion(question)) {
-        points += 10;
-    }
-})
+function calculateResult() {
+    questions.forEach(question => {
+        if (handleQuestion(question)) {
+            points += 10;
+        }
+    })
+    
+    return points
+}
+
 
 alert(`Ваш результат ${points} баллов!`);
