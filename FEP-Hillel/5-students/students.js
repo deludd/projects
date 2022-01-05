@@ -21,10 +21,13 @@ const students = [
     }
 ]
 
+averageStudentMark(10)
+averageGroupMark(students)
+
 function averageStudentMark(searchId){
     const studentMarks = students.find(allMarks => allMarks.id === searchId).marks
 
-    console.log(calculateAverage(studentMarks))
+    return console.log(calculateAverage(studentMarks))
 }
 
 function calculateAverage(studentMarks) {
@@ -32,10 +35,10 @@ function calculateAverage(studentMarks) {
 }
 
 function averageGroupMark(students){
-    const test = students.map(average => average.marks)
+    const massiv = students.map(average => average.marks).flat()
 
-    const avr = test.reduce((a,b) => a + b) / test.length
+    const avr = massiv.reduce((a,b) => a + b) / massiv.length
+
+    return console.log(avr)
 }
 
-averageStudentMark(10)
-averageGroupMark(students)
