@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HW-7</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        input {
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-color: #FAFAFA;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .todo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+            border: 2px solid lightblue;
+            border-radius: 15px;
+            padding: 20px 25px;
+        }
+
+        .todo__input {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .todo__text {
+            color: cadetblue;
+            padding: 5px 10px;
+            min-width: 400px;
+            border-radius: 10px;
+            border: 1px solid lightblue;
+        }
+
+        .todo__text::placeholder {
+            color: lightgray;
+        }
+
+        .todo__text:focus {
+            border: 1px solid cadetblue;
+        }
+
+        .todo__add {
+            padding: 10px 25px;
+            margin-top: 20px;
+            border: 1px solid lightblue;
+            border-radius: 10px;
+            background-color: lightblue;
+            color: #FAFAFA;
+        }
+
+        .todo__add:hover {
+            background-color: cadetblue;
+            border: 1px solid cadetblue;
+        }
+
+        .list {
+            text-align: left;
+        }
+
+        .todoList {
+            margin-top: 15px;
+            color: cadetblue;
+            border: 2px solid lightblue;
+            border-radius: 15px;
+            padding: 10px 15px;
+        }
+
+        .todoList:hover {
+            background-color: aliceblue;
+        }
+
+    </style>
+    <script src="9-todolist.js" defer></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="todo">
+        <div class="todo__input">
+            <input class="todo__text" type="text" placeholder="Task to be done ">
+            <button class="todo__add">Add ToDo</button>
+        </div>
+    </div>
+
+    <div class="list">
+
+    </div>
+</div>
+
+</body>
+</html>
