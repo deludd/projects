@@ -1,0 +1,132 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HW-7</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        input {
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-repeat: no-repeat;
+            background-position: top center;
+            background-color: #FAFAFA;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .todo {
+            margin-top: 100px;
+            border: 2px solid lightblue;
+            border-radius: 15px;
+            padding: 20px 25px;
+        }
+
+        td {
+            color: lightblue;
+        }
+
+        .test {
+            border: 1px solid lightblue;
+        }
+
+        .todo__input {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .todo__text {
+            color: cadetblue;
+            padding: 5px 10px;
+            min-width: 200px;
+            border-radius: 10px;
+            border: 1px solid lightblue;
+        }
+
+        .todo__text::placeholder {
+            color: lightgray;
+        }
+
+        .todo__text:focus {
+            border: 1px solid cadetblue;
+        }
+
+        .button__add {
+            padding: 5px 10px;
+            border: 1px solid lightblue;
+            border-radius: 10px;
+            background-color: lightblue;
+            color: #FAFAFA;
+        }
+
+        .button__add:hover {
+            background-color: cadetblue;
+            border: 1px solid cadetblue;
+        }
+
+    </style>
+    <script src="10-contact-list.js" defer></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <table class="todo">
+        <tr>
+            <td>Name</td>
+            <td>Surname</td>
+            <td>Number</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <input class="todo__text" name="name" type="text" placeholder="Your Name">
+            </td>
+            <td>
+                <input class="todo__text" name="surname" type="text" placeholder="Your Surname">
+            </td>
+            <td>
+                <input class="todo__text" name="phone" type="text" placeholder="Your Number">
+            </td>
+            <td>
+                <button class="button__add">Add contact</button>
+            </td>
+        </tr>
+        <tbody id="contactList"></tbody>
+    </table>
+</div>
+
+    <script id="contactItemTemplate" type="text/template">
+        <tr>
+            <td>{{name}}</td>
+            <td>{{surname}}</td>
+            <td>{{phone}}</td>
+            <td></td>
+        </tr>
+    </script>
+</div>
+
+
+</body>
+</html>
